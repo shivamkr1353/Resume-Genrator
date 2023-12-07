@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Resume Generator</title>
+  </head>
+
+  <body>
+    <!--here starts html code-->
+    <div class="container" id="cv-form">
+      <h1 class="text-center my-2">Resume Generator</h1>
+      <!--<p class="text-center">By: Shivam Kr</p>-->
+
+      <div class="row">
+        <div class="col-md-6">
+          <!--first column-->
+          <!-- ... (our form content) ... -->
+          <h3>Personal Information</h3>
+          <div class="form-group">
+            <label for="namefield">Name</label>
+            <input
+              type="text"
+              id="namefield"
+              class="form-control"
+              placeholder="Full Name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="agefield">Age</label>
+            <input
+              type="text"
+              id="agefield"
+              class="form-control"
+              placeholder="Enter here"
+            />
+          </div>
+
+          <div class="form-group mt-2">
+            <label for="contactfield">Contact No</label>
+            <input
+              type="text"
+              id="contactfield"
+              class="form-control"
+              placeholder="XXXXXXXXXX"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="emailfield">Email Address</label>
+            <input
+              type="text"
+              id="emailfield"
+              class="form-control"
+              placeholder="Someone@gmail.com"
+            />
+          </div>
+
+          <div class="form-group mt-2">
+            <label for="addressfield">Your Address</label>
+            <textarea
+              class="form-control"
+              rows="6"
+              id="addressfield"
+              placeholder="Full Address"
+            ></textarea>
+
+            <div class="form-group mt-3">
+              <label for="">Select Your Photo</label>
+              <input id="imagefield" type="file" class="form-control" />
+            </div>
+
+            <p class="text-secondary mt-3">Important Links</p>
+          </div>
+
+          <div class="form-group mt-2">
+            <label for="fbfield">Facebook Link</label>
+            <input
+              type="text"
+              id="fbfield"
+              class="form-control"
+              placeholder="URL"
+            />
+          </div>
+
+          <div class="form-group mt-2">
+            <label for="instagramfield">Instagram Link</label>
+            <input
+              type="text"
+              id="instagramfield"
+              class="form-control"
+              placeholder="URL"
+            />
+          </div>
+
+          <div class="form-group mt-2 mb-5">
+            <label for="linkedinfield">Linked in Link</label>
+            <input
+              type="text"
+              id="linkedfield"
+              class="form-control"
+              placeholder="URL"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="namefield">Hobby</label>
+            <input
+              type="text"
+              id="hobbyfield"
+              class="form-control"
+              placeholder="Enter Here"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--second column-->
+          <!-- ... (your form content) ... -->
+          <h3>Professional Details</h3>
+
+          <div class="form-group mt-2">
+            <label for="">Objective</label>
+            <textarea
+              id="objectivefield"
+              class="form-control"
+              rows="6"
+              placeholder="Enter Here"
+            ></textarea>
+
+            <div class="form-group mt-2">
+              <label for="">Skills</label>
+              <textarea
+                id="skillsfield"
+                class="form-control"
+                rows="4"
+                placeholder="Enter Here"
+              ></textarea>
+            </div>
+
+            <div class="form-group mt-2" id="we">
+              <label for="">Work Experience</label>
+              <textarea
+                class="form-control wefield"
+                rows="5"
+                placeholder="Enter Here"
+              ></textarea>
+
+              <!--ADD buttons-->
+              <div class="container text-center mt-2" id="WeAddButton">
+                <button
+                  onclick="addnewwrkexpfield()"
+                  class="btn btn-primary btn-sm m-3"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group mt-2" id="aq">
+              <label for="">Academic Qualification</label>
+              <textarea
+                class="form-control aqfield"
+                rows="5"
+                placeholder="Enter Here"
+              ></textarea>
+
+              <!--ADD buttons-->
+              <div class="container text-center mt-2" id="aqAddButton">
+                <button
+                  onclick="addnewacadqfyfield()"
+                  class="btn btn-primary btn-sm m-3"
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container text-center m-5">
+          <button onclick="generateresume()" class="btn btn-primary btn-lg">
+            Generate
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Explicit closing tag for cv-form -->
+
+    <!--cv template start-->
+    <div class="container" id="cv-template">
+      <div class="row">
+        <div class="col-md-4 text-center py-5 background">
+          <!--first column of resume-->
+          <img
+            src="/public/profile.png.jpg"
+            alt="profile image"
+            class="img-fluid myimg"
+            id="imageT"
+          />
+
+          <div class="container">
+            <p id="nameT1">Shivam Kumar</p>
+            <p id="ageT">18</p>
+            <p id="contactT">+916216789222</p>
+            <p id="emailT">someone@example.com</p>
+            <p id="addressT">kokar ranchi shanti niwas</p>
+            <hr />
+            <p>Facebook:<a id="fbT" href="#1">https://www.facebook.com/</a></p>
+            <p>
+              Instagram:<a id="instaT" href="#2">https://www.instagram.com/</a>
+            </p>
+            <p>
+              Linked in:<a id="linkedT" href="#3">https://www.linkedin.com/</a>
+            </p>
+            <hr />
+            <p>HOBBY</p>
+            <p id="hobbyT">cricket</p>
+          </div>
+        </div>
+        <div class="col-md-8 py-5">
+          <!--second column of resume-->
+          <h1 id="nameT2" class="text-center" style="font-weight: 980">
+            Shivam Kumar
+          </h1>
+          <!-- objective card -->
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Objective</h3>
+            </div>
+            <div class="card-body">
+              <p id="objectiveT">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Molestias, in quod. Molestiae reprehenderit dolorem atque, fugit
+                quae enim ratione exercitationem ex vel neque obcaecati nemo
+                animi. Fugit voluptatem ullam aliquid animi libero unde
+                quibusdam iste sint atque beatae. Quibusdam quos corrupti
+                tempora cumque deserunt nesciunt laboriosam porro maiores culpa
+                voluptatibus.
+              </p>
+            </div>
+          </div>
+          <!-- skill -->
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Skills</h3>
+            </div>
+            <div class="card-body">
+              <p id="skillsT">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Molestias, in quod. Molestiae reprehenderit dolorem atque, fugit
+                quae enim ratione exercitationem ex vel neque obcaecati nemo
+                animi.
+              </p>
+            </div>
+          </div>
+          <!-- for work experience -->
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Work Experience</h3>
+            </div>
+            <div class="card-body">
+              <ul id="weT">
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui,
+                  tenetur laboriosam fuga ex cum odio?
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui,
+                  tenetur laboriosam fuga ex cum odio?
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui,
+                  tenetur laboriosam fuga ex cum odio?
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- educational qualification -->
+          <div class="card mt-4">
+            <div class="card-header background">
+              <h3>Academic Qualification</h3>
+            </div>
+            <div class="card-body">
+              <ul id="aqT">
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui,
+                  tenetur laboriosam fuga ex cum odio?
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui,
+                  tenetur laboriosam fuga ex cum odio?
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui,
+                  tenetur laboriosam fuga ex cum odio?
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="container mt-4 text-center">
+            <button
+              onclick="printresume()"
+              class="btn background btn-lg print-button"
+            >
+              Print
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
